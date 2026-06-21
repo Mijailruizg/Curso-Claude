@@ -21,16 +21,15 @@ const TOTAL_VIDEOS = 8;
 let currentUserDoc = null;
 let currentPlayingVideoId = null;
 
-// The 8 Videos Data
 const videosData = [
     { id: 1, title: 'Introducción a la Inteligencia Artificial', file: '1-Clase.mp4' },
-    { id: 2, title: 'Video 2', file: '2-Clase.mp4' },
-    { id: 3, title: 'Video 3', file: '3-clase.mp4' },
-    { id: 4, title: 'Video 4', file: '4-clase.mp4' },
-    { id: 5, title: 'Video 5', file: '5-clase.mp4' },
-    { id: 6, title: 'Video 6', file: '6-Clase.mp4' },
-    { id: 7, title: 'Video 7', file: '7-Clase.mp4' },
-    { id: 8, title: 'Video 8', file: '8-Clase.mp4' }
+    { id: 2, title: 'Video ', file: '2-Clase.mp4' },
+    { id: 3, title: 'Video ', file: '3-clase.mp4' },
+    { id: 4, title: 'Video ', file: '4-clase.mp4' },
+    { id: 5, title: 'Video ', file: '5-clase.mp4' },
+    { id: 6, title: 'Video ', file: '6-Clase.mp4' },
+    { id: 7, title: 'Video ', file: '7-Clase.mp4' },
+    { id: 8, title: 'Video ', file: '8-Clase.mp4' }
 ];
 
 onAuthStateChanged(auth, async (user) => {
