@@ -1,6 +1,6 @@
 import { auth, db } from './firebase-config.js';
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { doc, getDoc, updateDoc, arrayUnion, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { doc, getDoc, setDoc, updateDoc, arrayUnion, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // DOM Elements
 const userGreeting = document.getElementById('user-greeting');
@@ -49,11 +49,24 @@ onAuthStateChanged(auth, async (user) => {
         
         if (docSnap.exists()) {
             currentUserDoc = docSnap.data();
-            renderVideos();
-            updateProgressUI();
+        } else {
+            // Create user doc if it doesn't exist (in case they bypassed the login button)
+            const newUserData = {
+                uid: user.uid,
+                name: user.displayName,
+                email: user.email,
+                progress: [],
+                joinedAt: new Date()
+            };
+            await setDoc(userRef, newUserData);
+            currentUserDoc = newUserData;
         }
+        
+        renderVideos();
+        updateProgressUI();
     } catch (error) {
         console.error("Error fetching user data:", error);
+        videoGrid.innerHTML = `<div style="color:red; padding: 20px; font-weight:bold;">Error de Base de Datos: ${error.message} <br><br> Por favor revisa si la base de datos Firestore está activada en modo prueba.</div>`;
     }
 });
 
