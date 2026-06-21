@@ -24,23 +24,21 @@ let currentPlayingVideoId = null;
 // The 8 Videos Data
 const videosData = [
     { id: 1, title: 'Introducción a la Inteligencia Artificial', file: '1-Clase.mp4' },
-    { id: 2, title: 'Machine Learning Básico', file: '2-Clase.mp4' },
-    { id: 3, title: 'Redes Neuronales', file: '3-clase.mp4' },
-    { id: 4, title: 'Procesamiento de Lenguaje Natural', file: '4-clase.mp4' },
-    { id: 5, title: 'Modelos Generativos (LLMs)', file: '5-clase.mp4' },
-    { id: 6, title: 'Ingeniería de Prompts', file: '6-Clase.mp4' },
-    { id: 7, title: 'Aplicaciones Prácticas', file: '7-Clase.mp4' },
-    { id: 8, title: 'El Futuro de la IA y Ética', file: '8-Clase.mp4' }
+    { id: 2, title: 'Video 2', file: '2-Clase.mp4' },
+    { id: 3, title: 'Video 3', file: '3-clase.mp4' },
+    { id: 4, title: 'Video 4', file: '4-clase.mp4' },
+    { id: 5, title: 'Video 5', file: '5-clase.mp4' },
+    { id: 6, title: 'Video 6', file: '6-Clase.mp4' },
+    { id: 7, title: 'Video 7', file: '7-Clase.mp4' },
+    { id: 8, title: 'Video 8', file: '8-Clase.mp4' }
 ];
 
-// Auth Check
 onAuthStateChanged(auth, async (user) => {
     if (!user) {
         window.location.href = 'index.html';
         return;
     }
-    
-    // Load user data
+
     userGreeting.textContent = `Hola, ${user.displayName}`;
     
     try {
@@ -50,7 +48,6 @@ onAuthStateChanged(auth, async (user) => {
         if (docSnap.exists()) {
             currentUserDoc = docSnap.data();
         } else {
-            // Create user doc if it doesn't exist (in case they bypassed the login button)
             const newUserData = {
                 uid: user.uid,
                 name: user.displayName,
