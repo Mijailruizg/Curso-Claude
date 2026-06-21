@@ -18,8 +18,6 @@ if (btnLoginGoogle) {
             loginError.classList.add('hidden');
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
-            
-            // Check if user exists in Firestore
             const userRef = doc(db, "users", user.uid);
             const docSnap = await getDoc(userRef);
             
@@ -29,7 +27,7 @@ if (btnLoginGoogle) {
                     uid: user.uid,
                     name: user.displayName,
                     email: user.email,
-                    progress: [], // Array of completed video indices (1 to 8)
+                    progress: [],
                     joinedAt: new Date()
                 });
             }
