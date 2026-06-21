@@ -3,13 +3,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getAuth, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// TODO: REEMPLAZA ESTE OBJETO CON LA CONFIGURACIÓN DE TU PROYECTO DE FIREBASE
-// Instrucciones:
-// 1. Ve a console.firebase.google.com y crea un proyecto.
-// 2. Activa "Authentication" y añade "Google" como proveedor.
-// 3. Activa "Firestore Database" (en modo prueba para empezar).
-// 4. Registra una aplicación web (</>) en tu proyecto de Firebase.
-// 5. Copia el objeto firebaseConfig que te dan y pégalo aquí abajo:
 
 const firebaseConfig = {
   apiKey: "AIzaSyC-cL0zKvUph0Z-dTS_a3S4Pv8Fz6mKTng",
