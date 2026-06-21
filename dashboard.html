@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Curso Claude</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-body">
+    <!-- Navbar -->
+    <nav class="navbar glass-panel">
+        <div class="nav-content">
+            <h1 class="logo-text">Curso <span>Claude</span></h1>
+            <div class="user-info">
+                <span id="user-greeting">Hola, ...</span>
+                <button id="btn-logout" class="btn btn-outline">Cerrar Sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Progress Section -->
+        <section class="progress-section glass-panel">
+            <h2>Tu Progreso</h2>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <p id="progress-text" class="progress-text">0/8 Videos Completados</p>
+        </section>
+
+        <!-- Video Player Modal/Container (Hidden by default) -->
+        <section id="player-section" class="player-section glass-panel hidden">
+            <div class="player-header">
+                <h3 id="current-video-title">Título del Video</h3>
+                <button id="btn-close-player" class="btn-close">&times;</button>
+            </div>
+            <div class="video-container">
+                <video id="main-video-player" controls controlsList="nodownload">
+                    <source src="" type="video/mp4">
+                    Tu navegador no soporta videos HTML5.
+                </video>
+            </div>
+            <div class="player-controls">
+                <button id="btn-mark-completed" class="btn btn-primary">Marcar como Completado</button>
+            </div>
+        </section>
+
+        <!-- Course Grid -->
+        <section class="course-section">
+            <h2 class="section-title">Curso 1: Inteligencia Artificial Avanzada</h2>
+            <div id="video-grid" class="video-grid">
+                <!-- Videos will be injected here via JS -->
+            </div>
+        </section>
+
+        <!-- Certificate Form (Hidden until 8/8) -->
+        <section id="certificate-section" class="certificate-section glass-panel hidden">
+            <div class="cert-icon">🏆</div>
+            <h2>¡Felicidades! Has completado el curso.</h2>
+            <p>Por favor, llena este formulario para generar tu certificado.</p>
+            <form id="certificate-form" class="cert-form">
+                <div class="form-group">
+                    <label for="cert-name">Nombre Completo (para el certificado)</label>
+                    <input type="text" id="cert-name" required placeholder="Ej. Juan Pérez">
+                </div>
+                <div class="form-group">
+                    <label for="cert-email">Correo Electrónico</label>
+                    <input type="email" id="cert-email" required placeholder="tucorreo@ejemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="cert-participants">Otros Participantes (Opcional)</label>
+                    <input type="text" id="cert-participants" placeholder="Ej. Ana, Luis">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Solicitar Certificado</button>
+            </form>
+            <div id="cert-success-msg" class="success-msg hidden">¡Solicitud enviada con éxito! Recibirás tu certificado pronto.</div>
+        </section>
+    </main>
+
+    <!-- Firebase SDK -->
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
