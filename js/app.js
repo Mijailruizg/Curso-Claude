@@ -23,13 +23,13 @@ let currentPlayingVideoId = null;
 
 const videosData = [
     { id: 1, title: 'Introducción a la Inteligencia Artificial', file: '1-Clase.mp4' },
-    { id: 2, title: 'Video ', file: '2-Clase.mp4' },
-    { id: 3, title: 'Video ', file: '3-clase.mp4' },
-    { id: 4, title: 'Video ', file: '4-clase.mp4' },
-    { id: 5, title: 'Video ', file: '5-clase.mp4' },
-    { id: 6, title: 'Video ', file: '6-Clase.mp4' },
-    { id: 7, title: 'Video ', file: '7-Clase.mp4' },
-    { id: 8, title: 'Video ', file: '8-Clase.mp4' }
+    { id: 2, title: 'Video', file: '2-Clase.mp4' },
+    { id: 3, title: 'Video', file: '3-clase.mp4' },
+    { id: 4, title: 'Video', file: '4-clase.mp4' },
+    { id: 5, title: 'Video', file: '5-clase.mp4' },
+    { id: 6, title: 'Video', file: '6-Clase.mp4' },
+    { id: 7, title: 'Video', file: '7-Clase.mp4' },
+    { id: 8, title: 'Video', file: '8-Clase.mp4' }
 ];
 
 onAuthStateChanged(auth, async (user) => {
@@ -66,7 +66,6 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
-// Logout
 btnLogout.addEventListener('click', () => {
     signOut(auth).then(() => {
         window.location.href = 'index.html';
@@ -96,7 +95,6 @@ function renderVideos() {
     });
 }
 
-// Update Progress UI
 function updateProgressUI() {
     const completedCount = currentUserDoc.progress.length;
     const percentage = (completedCount / TOTAL_VIDEOS) * 100;
@@ -106,13 +104,11 @@ function updateProgressUI() {
     
     if (completedCount === TOTAL_VIDEOS) {
         certificateSection.classList.remove('hidden');
-        // Pre-fill email and name
         document.getElementById('cert-name').value = currentUserDoc.name;
         document.getElementById('cert-email').value = currentUserDoc.email;
     }
 }
 
-// Open Player
 function openPlayer(video) {
     currentPlayingVideoId = video.id;
     currentVideoTitle.textContent = `${video.id}. ${video.title}`;
@@ -181,7 +177,8 @@ certificateForm.addEventListener('submit', async (e) => {
     
     const name = document.getElementById('cert-name').value;
     const email = document.getElementById('cert-email').value;
-    const participants = document.getElementById('cert-participants').value;
+    const career = document.getElementById('cert-career').value;
+    const semester = document.getElementById('cert-semester').value;
     
     try {
         // Guardar solicitud en la base de datos
@@ -189,7 +186,8 @@ certificateForm.addEventListener('submit', async (e) => {
             uid: auth.currentUser.uid,
             name,
             email,
-            participants,
+            career,
+            semester,
             course: "Curso Claude - IA Avanzada",
             dateRequested: new Date()
         });
